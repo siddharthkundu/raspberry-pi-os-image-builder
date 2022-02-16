@@ -1,0 +1,25 @@
+{
+  "variables": {
+  },
+  "builders": [
+    {
+      "type": "arm-image",
+      "iso_url": "https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-03-25/2021-03-04-raspios-buster-armhf-lite.zip",
+      "iso_checksum": "sha256:ea92412af99ec145438ddec3c955aa65e72ef88d84f3307cea474da005669d39",
+      "target_image_size": 2147483648
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+       "sudo mkdir /tmp/ssm",
+       "sudo curl https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/debian_arm/amazon-ssm-agent.deb -o /tmp/ssm/amazon-ssm-agent.deb",
+       "sudo dpkg -i /tmp/ssm/amazon-ssm-agent.deb",
+       "sudo service amazon-ssm-agent stop",
+       "sudo amazon-ssm-agent -register -code LO4tTdi9U2HSLC6EtUg4 -id ae97e28c-6467-4aeb-bc88-f7ca094e8224 -region eu-west-1",
+       "sudo service amazon-ssm-agent start"
+      ]
+    }
+  ]
+}

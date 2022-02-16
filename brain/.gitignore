@@ -1,0 +1,9 @@
+*.config
+*.log
+*.checklog
+*/**/__pycache__
+.idea/
+client_development/
+htmlcov/
+venv/
+*.egg-info

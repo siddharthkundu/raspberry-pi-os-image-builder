@@ -1,0 +1,7 @@
+robot_id: 2001
+farm_id: 4001
+serial_name_pattern: /dev/ttyUSB*
+serial_timeout_right: 300
+serial_timeout_left: 300
+max_speed_watering: 160
+debug_only_serialless: True
